@@ -2,10 +2,9 @@ import 'package:session3_task/models/work_area.dart';
 import 'work_area_api.dart';
 
 class WorkAreasRepository {
-  static List<WorkArea> workAreaList = [];
   WorkAreasRepository._();
   static setWorkAreas(int page, int limit) async {
-    workAreaList.clear();
+    List<WorkArea> workAreaList = [];
     var response = await WorkAreaApi.getRequestOfWorkArea(
       page: page,
       limit: limit,
@@ -13,6 +12,6 @@ class WorkAreasRepository {
 
     for (Map<String, dynamic> workArea in response['workAreas']) {
       workAreaList.add(WorkArea.fromJson(workArea));
-    }
+    }return workAreaList;
   }
 }

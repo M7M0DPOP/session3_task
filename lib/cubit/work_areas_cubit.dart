@@ -10,8 +10,11 @@ class WorkAreasCubit extends Cubit<WorkAreasState> {
   void loadWorkAreas(int page, int limit) async {
     emit(WorkAreasLoading());
     try {
-      await WorkAreasRepository.setWorkAreas(page, limit);
-      emit(WorkAreasLoaded(WorkAreasRepository.workAreaList));
+      List<WorkArea> workAreaList = await WorkAreasRepository.setWorkAreas(
+        page,
+        limit,
+      );
+      emit(WorkAreasLoaded(workAreaList));
     } catch (e) {
       emit(WorkAreasError(e.toString()));
     }

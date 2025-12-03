@@ -40,24 +40,23 @@ class _HomeScreenState extends State<HomeScreen> {
               }
               if (state is WorkAreasLoaded) {
                 return ListView.builder(
-                  itemCount: WorkAreasRepository.workAreaList.length,
+                  itemCount: state.workAreas.length,
                   itemBuilder: (context, index) {
                     return ListTile(
                       title: Text(
-                        WorkAreasRepository.workAreaList[index].title_en,
+                        state.workAreas[index].title_en,
                       ),
                       subtitle: Text(
-                        WorkAreasRepository.workAreaList[index].description_en,
+                        state.workAreas[index].description_en,
                       ),
                       leading: Image.network(
-                        WorkAreasRepository.workAreaList[index].image_url,
+                        state.workAreas[index].image_url,
                       ),
                     );
                   },
                 );
-              }return const Center(
-                child: Text('No work areas available'),
-              );
+              }
+              return const Center(child: Text('No work areas available'));
             },
           ),
         ),
