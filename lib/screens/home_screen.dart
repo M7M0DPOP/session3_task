@@ -40,17 +40,17 @@ class _HomeScreenState extends State<HomeScreen> {
               }
               if (state is WorkAreasLoaded) {
                 return ListView.builder(
-                  itemCount: state.workAreas.length,
+                  itemCount: state.workAreasList.length,
                   itemBuilder: (context, index) {
                     return ListTile(
                       title: Text(
-                        state.workAreas[index].title_en,
+                        state.workAreasList[index].title_en,
                       ),
                       subtitle: Text(
-                        state.workAreas[index].description_en,
+                        state.workAreasList[index].description_en,
                       ),
                       leading: Image.network(
-                        state.workAreas[index].image_url,
+                        state.workAreasList[index].image_url,
                       ),
                     );
                   },

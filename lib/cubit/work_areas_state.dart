@@ -8,9 +8,9 @@ final class WorkAreasInitial extends WorkAreasState {}
 final class WorkAreasLoading extends WorkAreasState {}
 
 final class WorkAreasLoaded extends WorkAreasState {
-  final List<WorkArea> workAreas;
+  final List<WorkArea> workAreasList;
 
-  WorkAreasLoaded(this.workAreas);
+  WorkAreasLoaded(this.workAreasList);
 }
 
 final class WorkAreasError extends WorkAreasState {
