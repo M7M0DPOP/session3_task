@@ -12,7 +12,6 @@ class HomeScreenBody extends StatefulWidget {
 
 class _HomeScreenBodyState extends State<HomeScreenBody> {
   final ScrollController scrollController = ScrollController();
-  bool isHasMore = true;
 
   @override
   void initState() {
@@ -70,8 +69,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
             );
           }
           if (state is WorkAreasLoading) {
-            isHasMore = true;
-            WorkAreasLoaded.page = 2;
+
             return const Center(child: CircularProgressIndicator());
           }
           if (state is WorkAreasLoaded) {
@@ -102,9 +100,9 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
                   } else {
                     if (WorkAreasLoaded.workAreasList.length <
                         (WorkAreasLoaded.page - 1) * WorkAreasLoaded.limit) {
-                      isHasMore = false;
+                      WorkAreasLoaded.isHasMore = false;
                     }
-                    return isHasMore
+                    return WorkAreasLoaded.isHasMore
                         ? Padding(
                             padding: EdgeInsets.symmetric(vertical: 30),
                             child: Center(child: CircularProgressIndicator()),
