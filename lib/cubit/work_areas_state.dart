@@ -8,6 +8,8 @@ final class WorkAreasInitial extends WorkAreasState {}
 final class WorkAreasLoading extends WorkAreasState {}
 
 final class WorkAreasLoaded extends WorkAreasState {
+  static int page = 1;
+  static int limit = 2;
   static List<WorkArea> workAreasList = [];
 
   WorkAreasLoaded.initial(List<WorkArea> workAreasList) {
