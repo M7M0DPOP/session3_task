@@ -7,14 +7,26 @@ part 'work_areas_state.dart';
 
 class WorkAreasCubit extends Cubit<WorkAreasState> {
   WorkAreasCubit() : super(WorkAreasInitial());
-  void loadWorkAreas(int page, int limit) async {
+  Future<void> initialaizWorkAreas(int page, int limit) async {
     emit(WorkAreasLoading());
     try {
       List<WorkArea> workAreaList = await WorkAreasRepository.setWorkAreas(
         page,
         limit,
       );
-      emit(WorkAreasLoaded(workAreaList));
+      emit(WorkAreasLoaded.initial(workAreaList));
+    } catch (e) {
+      emit(WorkAreasError(e.toString()));
+    }
+  }
+
+  Future<void> extendWorkAreas(int page, int limit) async {
+    try {
+      List<WorkArea> workAreaList = await WorkAreasRepository.setWorkAreas(
+        page,
+        limit,
+      );
+      emit(WorkAreasLoaded.extend(workAreaList));
     } catch (e) {
       emit(WorkAreasError(e.toString()));
     }
