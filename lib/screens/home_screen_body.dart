@@ -12,7 +12,10 @@ class HomeScreenBody extends StatefulWidget {
 
 class _HomeScreenBodyState extends State<HomeScreenBody> {
   final ScrollController scrollController = ScrollController();
-
+  String? search;
+  final TextEditingController searchController = TextEditingController(
+    text: '',
+  );
   @override
   void initState() {
     super.initState();
@@ -22,6 +25,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
         context.read<WorkAreasCubit>().extendWorkAreas(
           WorkAreasLoaded.page,
           WorkAreasLoaded.limit,
+          search ?? '',
         );
         WorkAreasLoaded.page++;
       }
@@ -69,7 +73,6 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
             );
           }
           if (state is WorkAreasLoading) {
-
             return const Center(child: CircularProgressIndicator());
           }
           if (state is WorkAreasLoaded) {

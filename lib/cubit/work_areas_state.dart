@@ -19,7 +19,9 @@ final class WorkAreasLoaded extends WorkAreasState {
   }
   WorkAreasLoaded.extend(List<WorkArea> workAreasList) {
     WorkAreasLoaded.workAreasList.addAll(workAreasList);
-    WorkAreasLoaded.workAreasList=List.from(Set.of(WorkAreasLoaded.workAreasList));
+    WorkAreasLoaded.workAreasList = List.from(
+      Set.of(WorkAreasLoaded.workAreasList),
+    );
   }
 }
 
